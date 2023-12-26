@@ -1,28 +1,20 @@
-async function halt(command = 'test') {
+async function halt(command) {
 const child_process = require('child_process');
+const msg =  child_process.spawn('MSG',['*', 'ваше время вышло']);
 
+if (command == 'reboot') {
+const reboot = child_process.spawn('shutdown',['-r', '-t','1']);
+reboot.on('error', (error) =>
+console.log('err: \n', error)
+);
+}
+if (command == 'shutDev') {
+const shut = child_process.spawn('shutdown',['-s', '-t','0']);
+shut.on('error', (error) =>
+console.log('err: \n', error)
+);
+}
 
-  console.log(process.env.USERDOMAIN);
-  
-
-
-
-//Переход в директорию /srv/app
-//const cmd = child_process.spawn('shutdown',['-l']);
-
-//cmd.on('error', (error) =>
-  //  console.log('Cannot change dir: \n', error)
-//);
-console.log('halt file!',command);
-//Получение списка файлов и директорий для Linux
-//const ls = child_process.spawn('dir');
-
-// ls.stdout.on('data', (data) =>
-//     console.log('Files list: \n', data)
-// );
-// ls.stderr.on('error', (error) =>
-//     console.log('Error: \n', error)
-// );
 
   }
   

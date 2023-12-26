@@ -1,5 +1,6 @@
 var WebSocketClient = require('websocket').client;
 const halt = require("./workers/js/halt.js");
+const eventActions = require("./workers/js/eventActions.js");
 const pcName =process.env.USERDOMAIN;
 var client = new WebSocketClient();
 
@@ -24,6 +25,12 @@ client.on('connect', function(connection) {
         if (jsonMsg.command =='mirrorCmd' ) {
            mirrorRouter(jsonMsg.btn)
         }
+        if (jsonMsg.command =='servManager' ) {
+            mirrorRouter(jsonMsg.event)
+         }
+        if (jsonMsg.command =='notification' ) {
+            eventActions(jsonMsg.event)
+         }
      
         console.log(jsonMsg);
            
@@ -31,15 +38,15 @@ client.on('connect', function(connection) {
         switch (command) {
             case "shutDev":
                 console.log('halt ok!');   
-                halt('halt'); 
+                halt('shutDev'); 
                 break;
             case "reboot":
                 console.log('reboot ok!');   
-                halt(); 
+                halt("reboot"); 
                 break; 
             case "RU_ steam":
                 console.log('RU_ steam-ok!');   
-               // steam('RU_ steam'); 
+                eventActions('lastMin'); 
                 break;    
         
             default:
@@ -48,6 +55,7 @@ client.on('connect', function(connection) {
            
         
        }
+      
     });
     
 
