@@ -3,7 +3,7 @@ const halt = require("./workers/js/halt.js");
 const eventActions = require("./workers/js/eventActions.js");
 const pcName =process.env.USERDOMAIN;
 var client = new WebSocketClient();
-
+console.log("client started");
 
 client.on('connectFailed', function(error) {
     console.log('Connect Error: ' + error.toString());
