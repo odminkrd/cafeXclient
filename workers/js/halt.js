@@ -1,19 +1,16 @@
 async function halt(command) {
-const child_process = require('child_process');
-const msg =  child_process.spawn('MSG',['*', 'ваше время вышло']);
+var {spawn} = require('child_process');
 
 if (command == 'reboot') {
-const reboot = child_process.spawn('shutdown',['-r', '-t','1']);
-reboot.on('error', (error) =>
-console.log('err: \n', error)
-);
+  var spawn = await spawn("C:\\client\\workers\\exe\\nircmdc.exe",['exitwin','reboot','force']);     
+  spawn.stdout.on('data', function(msg){ console.log(Date.now(),msg.toString())});
 }
 if (command == 'shutDev') {
-const shut = child_process.spawn('shutdown',['-s', '-t','0']);
-shut.on('error', (error) =>
-console.log('err: \n', error)
-);
+  var spawn = await spawn("C:\\client\\workers\\exe\\nircmdc.exe",['exitwin','shutdown','force']);     
+  spawn.stdout.on('data', function(msg){ console.log(Date.now(),msg.toString())});
 }
+
+
 
 
   }

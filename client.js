@@ -1,6 +1,7 @@
 var WebSocketClient = require('websocket').client;
 const halt = require("./workers/js/halt.js");
 const eventActions = require("./workers/js/eventActions.js");
+const startExe = require("./workers/js/startExe.js");
 const pcName =process.env.USERDOMAIN;
 var client = new WebSocketClient();
 console.log("client started");
@@ -16,45 +17,32 @@ client.on('connect', function(connection) {
         console.log("Connection Error: " + error.toString());
     });
     connection.on('close', function() {
-        console.log('echo-protocol Connection Closed');
+        console.log(' Connection Closed');
         reconnect();
         
     });
     connection.on('message', function(message) {
         const jsonMsg = JSON.parse(message.utf8Data);
+
+        if (jsonMsg.command =='startExe' ) {
+            startExe(jsonMsg.exeFile, jsonMsg.data)
+         }
         if (jsonMsg.command =='mirrorCmd' ) {
-           mirrorRouter(jsonMsg.btn)
+            startExe(jsonMsg.btn)
         }
         if (jsonMsg.command =='servManager' ) {
-            mirrorRouter(jsonMsg.event)
+            startExe(jsonMsg.event)
          }
         if (jsonMsg.command =='notification' ) {
-            eventActions(jsonMsg.event)
+            startExe(jsonMsg.event)
+         }
+         if (jsonMsg.command =='RU_steam' || jsonMsg.command =='PC_steam' ) {
+            startExe(jsonMsg.command,jsonMsg.account);
          }
      
-        console.log(jsonMsg);
+       console.log(jsonMsg);
            
-       function mirrorRouter(command) {
-        switch (command) {
-            case "shutDev":
-                console.log('halt ok!');   
-                halt('shutDev'); 
-                break;
-            case "reboot":
-                console.log('reboot ok!');   
-                halt("reboot"); 
-                break; 
-            case "RU_ steam":
-                console.log('RU_ steam-ok!');   
-                eventActions('lastMin'); 
-                break;    
-        
-            default:
-                break;
-        }
-           
-        
-       }
+   
       
     });
     

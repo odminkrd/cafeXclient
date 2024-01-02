@@ -1,0 +1,14 @@
+
+
+[2024-01-01 22:09:22] Client version: 1702079268
+[2024-01-01 22:09:22] Failed to read store 'install' from 'C:\client\workers\exe\config\config.vdf.tmp'
+[2024-01-01 22:09:22] Failed to read store 'install' from 'C:\client\workers\exe\config\config.vdf.tmp'
+[2024-01-01 22:09:23] Flushed store 'install' to 'C:\client\workers\exe\config\config.vdf'
+[2024-01-01 22:09:23] Loaded store 'install' from 'C:\client\workers\exe\config\config.vdf' successfully
+[2024-01-01 22:09:24] Flushed store 'install' to 'C:\client\workers\exe\config\config.vdf'
+
+
+[2024-01-01 22:21:13] Client version: 1702079268
+[2024-01-01 22:21:13] Loaded store 'install' from 'C:\client\workers\exe\config\config.vdf' successfully
+[2024-01-01 22:21:13] Loaded store 'install' from 'C:\client\workers\exe\config\config.vdf' successfully
+[2024-01-01 22:21:13] Loaded store 'install' from 'C:\client\workers\exe\config\config.vdf' successfully
