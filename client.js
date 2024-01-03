@@ -1,6 +1,5 @@
 var WebSocketClient = require('websocket').client;
 const halt = require("./workers/js/halt.js");
-const eventActions = require("./workers/js/eventActions.js");
 const startExe = require("./workers/js/startExe.js");
 const pcName =process.env.USERDOMAIN;
 var client = new WebSocketClient();
@@ -11,18 +10,28 @@ client.on('connectFailed', function(error) {
     reconnect();
 });
 
-client.on('connect', function(connection) {
+client.on('connect', function(ws) {
     console.log('WebSocket Client Connected');
-    connection.on('error', function(error) {
-        console.log("Connection Error: " + error.toString());
+    ws.on('error', function(error) {
+        console.log("ws Error: " + error.toString());
     });
-    connection.on('close', function() {
-        console.log(' Connection Closed');
+    ws.on('close', function() {
+        console.log(' ws Closed');
         reconnect();
         
     });
-    connection.on('message', function(message) {
+    ws.on('message', function(message) {
         const jsonMsg = JSON.parse(message.utf8Data);
+
+        if (jsonMsg[0] =='auth' ) {
+            const msg = {
+                command: "mirrorCmd",
+                btn: "PC_steam",
+                devId: pcName,
+                sessionId: 0,
+              };
+              ws.send(JSON.stringify(msg));
+         }
 
         if (jsonMsg.command =='startExe' ) {
             startExe(jsonMsg.exeFile, jsonMsg.data)
@@ -48,12 +57,11 @@ client.on('connect', function(connection) {
     
 
     function auth() {
-        if (connection.connected) {
+        if (ws.connected) {
             var sendObj ={};
             sendObj.command = 'authPc';
             sendObj.pcName = pcName;
-            sendObj.ip = '192.168.1.104';
-    connection.send(JSON.stringify(sendObj));
+    ws.send(JSON.stringify(sendObj));
 
         }
     }
