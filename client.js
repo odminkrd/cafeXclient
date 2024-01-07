@@ -24,13 +24,13 @@ client.on('connect', function(ws) {
         const jsonMsg = JSON.parse(message.utf8Data);
 
         if (jsonMsg[0] =='auth' ) {
-            const msg = {
-                command: "mirrorCmd",
-                btn: "PC_steam",
-                devId: pcName,
-                sessionId: 0,
-              };
-              ws.send(JSON.stringify(msg));
+            // const msg = {
+            //     command: "mirrorCmd",
+            //     btn: "PC_steam",
+            //     devId: pcName,
+            //     sessionId: 0,
+            //   };
+            //   ws.send(JSON.stringify(msg));
          }
 
         if (jsonMsg.command =='startExe' ) {
