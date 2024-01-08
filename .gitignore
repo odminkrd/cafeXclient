@@ -1,0 +1,7 @@
+img/bans/Thumbs.db
+websocket-server-node/node_modules
+.sync_journal.db
+/node_modules
+.owncloudsync.log
+.sync_journal.db-wal
+.sync_journal.db-shm
