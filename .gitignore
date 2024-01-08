@@ -5,3 +5,7 @@ websocket-server-node/node_modules
 .owncloudsync.log
 .sync_journal.db-wal
 .sync_journal.db-shm
+Desktop.ini
+.sync/FolderType
+.sync/
+.sync/Archive/.owncloudsync.1.log
