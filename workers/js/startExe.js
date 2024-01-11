@@ -3,11 +3,17 @@ async function startExe(command,data) {
 
 
 
-if (command == 'PC_steam' || command == 'RU_steam') {
+if (command == 'PC_steam' ) {
   var spawn = await spawn("C:\\client\\workers\\exe\\satrt_steam.cmd",[data.pc_steam_user, data.pc_steam_pass]);     
   spawn.stdout.on('data', function(msg){ //console.log(Date.now(),msg.toString())
   });
    };
+
+if ( command == 'RU_steam') {
+  var spawn = await spawn("C:\\client\\workers\\exe\\satrt_steam.cmd",[data.ru_steam_user, data.ru_steam_pass]);     
+  spawn.stdout.on('data', function(msg){ //console.log(Date.now(),msg.toString())
+  });
+    };
 
 
 if (command == 'reboot') {
@@ -31,7 +37,7 @@ if (command == 'admin') {
 
 
 
-console.log('command->',command,"data->",data);
+//console.log("startexe->",'command->',command,"data->",data);
 
 
       }

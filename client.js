@@ -14,7 +14,7 @@ client.on('connect', function(ws) {
         console.log("ws Error: " + error.toString());
     });
     ws.on('close', function() {
-        console.log(' ws Closed');
+      //  console.log(' ws Closed');
         reconnect();
         
     });
@@ -40,7 +40,7 @@ client.on('connect', function(ws) {
             startExe(jsonMsg.command,jsonMsg.account);
          }
      
-       console.log(jsonMsg);
+     //  console.log(jsonMsg);
            
    
       
