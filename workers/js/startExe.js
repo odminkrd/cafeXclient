@@ -30,6 +30,10 @@ if (command == 'lastMin') {
     var spawn = await spawn("C:\\client\\workers\\exe\\notiTimeend.cmd");     
     spawn.stdout.on('data', function(msg){ console.log(Date.now(),msg.toString())});
   }
+  if (command == 'lastSec') {
+    var spawn = await spawn("C:\\client\\workers\\exe\\notiTimeendSec.cmd");     
+    spawn.stdout.on('data', function(msg){ console.log(Date.now(),msg.toString())});
+  }
 if (command == 'admin') {
     var spawn = await spawn("C:\\client\\workers\\exe\\notiAdmin.cmd");     
     spawn.stdout.on('data', function(msg){ console.log(Date.now(),msg.toString())});
