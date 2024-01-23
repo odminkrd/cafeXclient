@@ -5,13 +5,13 @@ async function startExe(command,data) {
 
 if (command == 'PC_steam' ) {
   var spawn = await spawn("C:\\client\\workers\\exe\\satrt_steam.cmd",[data.pc_steam_user, data.pc_steam_pass]);     
-  spawn.stdout.on('data', function(msg){ //console.log(Date.now(),msg.toString())
+  spawn.stdout.on('data', function(msg){ console.log(Date.now(),msg.toString())
   });
    };
 
 if ( command == 'RU_steam') {
   var spawn = await spawn("C:\\client\\workers\\exe\\satrt_steam.cmd",[data.ru_steam_user, data.ru_steam_pass]);     
-  spawn.stdout.on('data', function(msg){ //console.log(Date.now(),msg.toString())
+  spawn.stdout.on('data', function(msg){ console.log(Date.now(),msg.toString())
   });
     };
 
