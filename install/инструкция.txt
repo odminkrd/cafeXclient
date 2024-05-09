@@ -1,0 +1,8 @@
+1 установить sync и добавить папку client в корне диска С с таким ключём
+B7WLOQAEZCJW7KYZQAY63LMFUNTTKXH7T
+2 установить node https://nodejs.org/en/download/
+2-а сделать в папке client npm -install
+3 Установить nicCMD от админа
+4 скопировать ярлык браузера и стартер в автозагрузку
+5 перезагрузить комп
+ 
